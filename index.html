@@ -3,6 +3,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Une journée entre amis — Bouznika</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  --sand-light:#F8EFDD;
+  --sand:#EAD3A0;
+  --ocean-deep:#0F6E7D;
+  --ocean-mid:#177F8C;
+  --ocean-light:#4FB8B0;
+  --sunset:#E8743B;
+  --coral:#F4A582;
+  --ink:#1B3A4B;
+  --cream-card:#FFFBF2;
+  --font-display:'Fraunces', serif;
+  --font-body:'Plus Jakarta Sans', sans-serif;
+  --font-hand:'Caveat', cursive;
+  --font-mono:'Space Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:var(--font-body);
+  background:var(--sand-light);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+img,svg{display:block;}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(180deg,#F9D89C 0%, #F2A769 35%, #E8743B 62%, #C9522F 100%);
+}
+
+.hero-sun{
+  position:absolute;
+  top:16%;
+  left:50%;
+  transform:translateX(-50%);
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #FFF3D6, #FFD27A 55%, #F2A65A 100%);
+  box-shadow:0 0 90px 25px rgba(255,210,120,0.55);
+  animation:pulse-sun 6s ease-in-out infinite;
+}
+
+@keyframes pulse-sun{
+  0%,100%{transform:translateX(-50%) scale(1);}
+  50%{transform:translateX(-50%) scale(1.05);}
+}
+
+.hero-bird{
+  position:absolute;
+  width:34px;
+  opacity:0.55;
+}
+.hero-bird path{stroke:var(--ink); stroke-width:1.6; fill:none; stroke-linecap:round;}
+.bird-1{top:24%; left:-5%; animation:fly 26s linear infinite;}
+.bird-2{top:30%; left:-5%; animation:fly 32s linear infinite 4s; width:24px; opacity:0.4;}
+.bird-3{top:20%; left:-5%; animation:fly 22s linear infinite 12s; width:20px; opacity:0.35;}
+
+@keyframes fly{
+  from{transform:translateX(0);}
+  to{transform:translateX(125vw);}
+}
+
+.wave-wrap{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  line-height:0;
+}
+.wave-back{position:absolute; bottom:0; width:200%; animation:drift 22s linear infinite;}
+.wave-front{position:absolute; bottom:0; width:200%; animation:drift 14s linear infinite reverse;}
+@keyframes drift{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+.hero-content{
+  position:relative;
+  z-index:5;
+  text-align:center;
+  padding:0 24px;
+  color:#fff;
+}
+
+.postmark{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-mono);
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:8px 18px;
+  border:1.5px dashed rgba(255,255,255,0.75);
+  border-radius:999px;
+  margin-bottom:28px;
+  backdrop-filter:blur(2px);
+}
+
+.hero-content h1{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(2.8rem, 7vw, 5.5rem);
+  line-height:1.05;
+  text-shadow:0 4px 30px rgba(0,0,0,0.15);
+}
+.hero-content h1 em{
+  font-style:italic;
+  font-weight:400;
+  color:#FFE9C7;
+}
+
+.hero-sub{
+  font-size:clamp(1.05rem,2vw,1.3rem);
+  max-width:540px;
+  margin:22px auto 0;
+  font-weight:400;
+  opacity:0.95;
+}
+
+.scroll-cta{
+  display:inline-block;
+  margin-top:46px;
+  color:#fff;
+  text-decoration:none;
+  font-family:var(--font-mono);
+  font-size:0.85rem;
+  letter-spacing:0.05em;
+  border-bottom:1px solid rgba(255,255,255,0.6);
+  padding-bottom:4px;
+  animation:bob 2.4s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(6px);}
+}
+
+/* ---------- SECTION HEADS ---------- */
+.section-head{
+  text-align:center;
+  max-width:680px;
+  margin:0 auto 60px;
+  padding:0 24px;
+}
+.tag{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--sunset);
+  margin-bottom:14px;
+}
+.section-head h2{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:clamp(1.9rem,4vw,2.7rem);
+  color:var(--ink);
+}
+
+/* ---------- CREW ---------- */
+.crew{
+  padding:120px 24px 110px;
+  background:var(--sand-light);
+  position:relative;
+}
+
+.polaroid-grid{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:46px 32px;
+}
+
+@media (max-width:980px){
+  .polaroid-grid{grid-template-columns:repeat(2,1fr); gap:50px 24px;}
+}
+@media (max-width:560px){
+  .polaroid-grid{grid-template-columns:1fr; max-width:320px;}
+}
+
+.polaroid{
+  background:var(--cream-card);
+  border-radius:6px;
+  padding:18px 18px 22px;
+  box-shadow:0 18px 30px -12px rgba(27,58,75,0.25), 0 2px 6px rgba(27,58,75,0.08);
+  position:relative;
+  opacity:0;
+  transform:translateY(28px) rotate(var(--rot,0deg));
+  transition:transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease;
+}
+.polaroid.in-view{
+  opacity:1;
+  animation:settle 0.6s ease forwards;
+}
+@keyframes settle{
+  from{transform:translateY(28px) rotate(var(--rot,0deg)); opacity:0;}
+  to{transform:translateY(0) rotate(var(--rot,0deg)); opacity:1;}
+}
+.polaroid:hover{
+  transform:translateY(-6px) rotate(0deg) scale(1.03);
+  box-shadow:0 26px 38px -14px rgba(27,58,75,0.32);
+  z-index:3;
+}
+
+.polaroid:nth-child(1){--rot:-3deg;}
+.polaroid:nth-child(2){--rot:2deg;}
+.polaroid:nth-child(3){--rot:-2deg;}
+.polaroid:nth-child(4){--rot:3deg;}
+.polaroid:nth-child(5){--rot:2deg;}
+.polaroid:nth-child(6){--rot:-3deg;}
+.polaroid:nth-child(7){--rot:1deg;}
+
+.tape{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%) rotate(-4deg);
+  width:64px;
+  height:24px;
+  background:rgba(244,165,130,0.55);
+  border:1px solid rgba(244,165,130,0.7);
+}
+
+.avatar{
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:3px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:16px;
+  position:relative;
+  overflow:hidden;
+}
+.avatar svg{width:38%; height:38%;}
+.avatar svg path, .avatar svg circle{stroke:#fff; stroke-width:1.7; fill:none; stroke-linecap:round; stroke-linejoin:round;}
+
+.av-1{background:linear-gradient(135deg,#FFC07A,#E8743B);}
+.av-2{background:linear-gradient(135deg,#FF9E8C,#E8516B);}
+.av-3{background:linear-gradient(135deg,#3FA6C9,#0F6E7D);}
+.av-4{background:linear-gradient(135deg,#7FD9C4,#1B8A7A);}
+.av-5{background:linear-gradient(135deg,#F2C572,#D69A3E);}
+.av-6{background:linear-gradient(135deg,#8FE0B9,#2E9C7C);}
+.av-7{background:linear-gradient(135deg,#FF8E7E,#E8516B);}
+
+.p-name{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:1.35rem;
+  margin-bottom:4px;
+}
+.p-role{
+  font-family:var(--font-mono);
+  font-size:0.68rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--ocean-deep);
+  margin-bottom:10px;
+}
+.p-desc{
+  font-family:var(--font-hand);
+  font-size:1.2rem;
+  line-height:1.3;
+  color:#3a4a52;
+}
+
+/* ---------- GALLERY ---------- */
+.gallery{
+  padding:100px 24px 130px;
+  background:linear-gradient(180deg,var(--sand-light) 0%, #EFE2C4 100%);
+}
+
+.gallery-grid{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+@media (max-width:980px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:560px){
+  .gallery-grid{grid-template-columns:1fr;}
+}
+
+.scene-card{
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:3/4;
+  opacity:0;
+  transform:translateY(24px);
+  transition:transform 0.4s ease;
+}
+.scene-card.in-view{animation:settle 0.6s ease forwards;}
+.scene-card:hover{transform:translateY(-6px);}
+.scene-card svg{width:100%;height:100%;}
+.scene-caption{
+  position:absolute;
+  bottom:14px;
+  left:16px;
+  right:16px;
+  color:#fff;
+  font-family:var(--font-hand);
+  font-size:1.3rem;
+  text-shadow:0 2px 10px rgba(0,0,0,0.35);
+}
+
+/* ---------- FOOTER ---------- */
+.stamp-footer{
+  background:var(--ink);
+  color:#F8EFDD;
+  text-align:center;
+  padding:70px 24px 50px;
+}
+.postmark-circle{
+  width:84px;
+  height:84px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  border:2px dashed rgba(248,239,221,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  letter-spacing:0.05em;
+  text-align:center;
+  line-height:1.3;
+}
+.stamp-footer p{
+  font-family:var(--font-hand);
+  font-size:1.4rem;
+  opacity:0.9;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-sun"></div>
+
+  <svg class="hero-bird bird-1" viewBox="0 0 24 12"><path d="M0 6 Q6 0 12 6 Q18 0 24 6"/></svg>
+  <svg class="hero-bird bird-2" viewBox="0 0 24 12"><path d="M0 6 Q6 0 12 6 Q18 0 24 6"/></svg>
+  <svg class="hero-bird bird-3" viewBox="0 0 24 12"><path d="M0 6 Q6 0 12 6 Q18 0 24 6"/></svg>
+
+  <div class="hero-content">
+    <span class="postmark">☀ Bouznika · Maroc</span>
+    <h1>Une journée entre <em>amis</em></h1>
+    <p class="hero-sub">Sable chaud, rires sans fin et la mer à perte de vue — sept amis, un même été.</p>
+    <a href="#equipe" class="scroll-cta">Voir la bande ↓</a>
+  </div>
+
+  <div class="wave-wrap">
+    <svg class="wave-back" viewBox="0 0 2000 160" preserveAspectRatio="none" height="150">
+      <path d="M0,90 C150,140 350,40 500,90 C650,140 850,40 1000,90 C1150,140 1350,40 1500,90 C1650,140 1850,40 2000,90 L2000,160 L0,160 Z" fill="#177F8C" opacity="0.55"/>
+    </svg>
+    <svg class="wave-front" viewBox="0 0 2000 160" preserveAspectRatio="none" height="120">
+      <path d="M0,100 C150,60 350,140 500,100 C650,60 850,140 1000,100 C1150,60 1350,140 1500,100 C1650,60 1850,140 2000,100 L2000,160 L0,160 Z" fill="#0F6E7D"/>
+    </svg>
+  </div>
+</section>
+
+<section id="equipe" class="crew">
+  <div class="section-head">
+    <span class="tag">— la bande —</span>
+    <h2>Sept amis, une même mer</h2>
+  </div>
+
+  <div class="polaroid-grid">
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-1">
+        <svg viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"/><circle cx="12" cy="13" r="3.5"/></svg>
+      </div>
+      <div class="p-name">Mohammad</div>
+      <div class="p-role">El Azzaoui</div>
+      <p class="p-desc">Toujours derrière l'objectif pour capturer le moment parfait.</p>
+    </div>
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-2">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      </div>
+      <div class="p-name">Seddik</div>
+      <div class="p-role">Benhajjaj</div>
+      <p class="p-desc">Le rieur du groupe, une blague pour chaque vague.</p>
+    </div>
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-3">
+        <svg viewBox="0 0 24 24"><path d="M2 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/></svg>
+      </div>
+      <div class="p-name">Jalal</div>
+      <div class="p-role">Loissam</div>
+      <p class="p-desc">Premier à l'eau, capitaine improvisé des baignades.</p>
+    </div>
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-4">
+        <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </div>
+      <div class="p-name">Mouaad</div>
+      <div class="p-role">Elhah</div>
+      <p class="p-desc">Le DJ de la plage, sa playlist ne s'arrête jamais.</p>
+    </div>
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-5">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="p-name">Souhaila</div>
+      <div class="p-role">Bella</div>
+      <p class="p-desc">L'organisatrice en chef — c'est elle qui a réservé les transats.</p>
+    </div>
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-6">
+        <svg viewBox="0 0 24 24"><path d="M3 8h14v5a5 5 0 01-5 5H8a5 5 0 01-5-5V8z"/><path d="M17 9h2a2 2 0 010 4h-2"/><path d="M7 3c0 1 1 1 1 2s-1 1-1 2"/><path d="M11 3c0 1 1 1 1 2s-1 1-1 2"/></svg>
+      </div>
+      <div class="p-name">Yassmin</div>
+      <div class="p-role">El Gherbi</div>
+      <p class="p-desc">Toujours un sourire et un thé à la menthe à partager.</p>
+    </div>
+
+    <div class="polaroid">
+      <span class="tape"></span>
+      <div class="avatar av-7">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 016 15M12 3a9 9 0 00-6 15M3 12h18"/></svg>
+      </div>
+      <div class="p-name">Kawter</div>
+      <div class="p-role">Affinna</div>
+      <p class="p-desc">Reine du volley-ball, imbattable sur le sable.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="section-head">
+    <span class="tag">— souvenirs —</span>
+    <h2>Quelques instants de la journée</h2>
+  </div>
+
+  <div class="gallery-grid">
+
+    <div class="scene-card">
+      <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="400" fill="#F4A261"/>
+        <rect width="300" height="260" fill="#F9D89C"/>
+        <circle cx="150" cy="150" r="55" fill="#FFE9C0"/>
+        <path d="M0,250 C60,220 120,280 180,250 C220,230 260,260 300,240 L300,400 L0,400 Z" fill="#0F6E7D"/>
+        <path d="M0,280 C60,260 120,300 180,280 C220,265 260,290 300,275 L300,400 L0,400 Z" fill="#177F8C"/>
+      </svg>
+      <span class="scene-caption">Coucher de soleil sur Bouznika</span>
+    </div>
+
+    <div class="scene-card">
+      <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="400" fill="#EAD3A0"/>
+        <circle cx="60" cy="60" r="65" fill="#E8B96B" opacity="0.5"/>
+        <circle cx="40" cy="180" r="8" fill="#C9522F" opacity="0.5"/>
+        <circle cx="70" cy="200" r="8" fill="#C9522F" opacity="0.5"/>
+        <circle cx="220" cy="260" r="8" fill="#C9522F" opacity="0.5"/>
+        <circle cx="250" cy="290" r="8" fill="#C9522F" opacity="0.5"/>
+        <path d="M30,170 Q40,150 55,170" stroke="#C9522F" stroke-width="3" fill="none" opacity="0.5"/>
+        <path d="M210,250 Q220,230 235,250" stroke="#C9522F" stroke-width="3" fill="none" opacity="0.5"/>
+      </svg>
+      <span class="scene-caption">Pieds dans le sable chaud</span>
+    </div>
+
+    <div class="scene-card">
+      <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="400" fill="#4FB8B0"/>
+        <path d="M0,180 C60,140 120,200 180,170 C220,150 260,180 300,160 L300,400 L0,400 Z" fill="#EAD3A0"/>
+        <path d="M150,160 L150,90" stroke="#1B3A4B" stroke-width="6"/>
+        <path d="M150,90 C150,90 220,95 220,140 C220,160 150,160 150,160 Z" fill="#E8743B"/>
+        <path d="M90,260 L90,150" stroke="#1B3A4B" stroke-width="6"/>
+        <path d="M90,150 C90,150 30,155 30,200 C30,220 90,220 90,220 Z" fill="#F4A582"/>
+      </svg>
+      <span class="scene-caption">Parasols et éclats de rire</span>
+    </div>
+
+    <div class="scene-card">
+      <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="300" height="400" fill="#0F6E7D"/>
+        <path d="M0,220 C60,180 120,240 180,210 C220,190 260,220 300,200 L300,400 L0,400 Z" fill="#177F8C"/>
+        <path d="M0,260 C60,230 120,270 180,250 C220,235 260,260 300,245 L300,400 L0,400 Z" fill="#4FB8B0"/>
+        <circle cx="120" cy="130" r="3" fill="#fff" opacity="0.7"/>
+        <circle cx="160" cy="160" r="3" fill="#fff" opacity="0.6"/>
+        <circle cx="200" cy="120" r="3" fill="#fff" opacity="0.5"/>
+        <circle cx="90" cy="170" r="3" fill="#fff" opacity="0.6"/>
+      </svg>
+      <span class="scene-caption">Vagues, complicité et bonne humeur</span>
+    </div>
+
+  </div>
+</section>
+
+<footer class="stamp-footer">
+  <div class="postmark-circle">BOUZNIKA<br>MAROC</div>
+  <p>Envoyé avec le sourire depuis le Maroc ☀</p>
+</footer>
+
+<script>
+  const reveal = document.querySelectorAll('.polaroid, .scene-card');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveal.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portail du service informatique - ANLCA</title>
 
 <style>
@@ -277,4 +829,4 @@ searchInput.addEventListener('keyup', function() {
 </script>
 
 </body>
-</html>
+</html> -->
