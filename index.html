@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portail du service informatique - ANLCA</title>
+
+<style>
+:root {
+    --bg-dark: #0f172a;
+    --card-dark: #1e293b;
+    --primary: #00f5d4;
+    --text-light: #e2e8f0;
+    --danger: #ff4d4d;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+}
+
+header {
+    background: #020617;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--primary);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+.container {
+    padding: 30px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.search-box {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-box input {
+    width: 60%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--primary);
+    background: #0f172a;
+    color: white;
+}
+
+.category {
+    margin-bottom: 40px;
+}
+
+.category h2 {
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Tablette */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+}
+
+.card {
+    background: var(--card-dark);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0, 245, 212, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 245, 212, 0.4);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.card p {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    background: #020617;
+    margin-top: 40px;
+    border-top: 1px solid var(--primary);
+}
+
+@media(max-width: 768px){
+    .search-box input {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🔐 Portail du service informatique - ANLCA</h1>
+</header>
+
+<div class="container">
+
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Rechercher un système...">
+</div>
+
+<!-- INFRASTRUCTURE -->
+<div class="category">
+    <h2>🖥 Infrastructure</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>Active Directory</h3>
+            <p>Gestion des utilisateurs et des stratégies.</p>
+            <a href="#" target="_blank">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Serveur Mail</h3>
+            <p>Administration Exchange / Webmail.</p>
+            <a href="https://192.168.20.43/ecp" target="_blank">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Administration Microsoft 365</h3>
+            <p>Administration Exchange / Webmail.</p>
+            <a href="https://admin.microsoft.com/Adminportal/Home#/users" target="_blank">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Firewall</h3>
+            <p>Configuration et supervision sécurité réseau.</p>
+            <a href="#" target="_blank">Accéder</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- APPLICATIONS -->
+<div class="category">
+    <h2>📂 Applications</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>ERP</h3>
+            <p>Administration système ERP.</p>
+            <a href="#">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>GED</h3>
+            <p>Gestion électronique des documents.</p>
+            <a href="#">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>IFMA</h3>
+            <p>Plateforme IFMA.</p>
+            <a href="https://ifma.anlca.gov.ma/admin" target="_blank">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Applications mobiles</h3>
+            <p>Console de gestion des applications mobiles.</p>
+            <a href="https://play.google.com/console/u/0/developers/8478131890384202936/app-list" target="_blank">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Portail Web</h3>
+            <p>Console d'administration du portail web.</p>
+            <a href="https://www.anlca.gov.ma/ar/bo_anlca/login" target="_blank">Accéder</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECURITE -->
+<div class="category">
+    <h2>🛡 Sécurité</h2>
+    <div class="grid">
+
+        <div class="card">
+            <h3>EDR Nucleon</h3>
+            <p>Console d’administration EDR.</p>
+            <a href="https://nucleon-edr.mdc.ma/" target="_blank">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Gestion des vulnérabilités (Fortra)</h3>
+            <p>Supervision des logs et alertes sécurité.</p>
+            <a href="#">Accéder</a>
+        </div>
+
+        <div class="card">
+            <h3>Solution PAM (Netwrix)</h3>
+            <p>Gestion des accès privilégiés.</p>
+            <a href="https://192.168.10.10:6500/" target="_blank">Accéder</a>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<footer>
+    © 2026 - Portail Service Informatique - Accès interne uniquement
+</footer>
+
+<script>
+const searchInput = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.card');
+
+searchInput.addEventListener('keyup', function() {
+    const filter = searchInput.value.toLowerCase();
+    cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(filter) ? "" : "none";
+    });
+});
+</script>
+
+</body>
+</html>
